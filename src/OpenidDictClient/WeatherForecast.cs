@@ -1,4 +1,4 @@
-namespace WebApiClient
+namespace OpenidDictClient
 {
     public class WeatherForecast
     {

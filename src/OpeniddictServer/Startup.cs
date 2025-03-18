@@ -182,14 +182,22 @@ public class Startup
                 //options.AddEncryptionKey(signingKey);
                 //options.AddSigningKey(signingKey);
 
-                options.AddEphemeralEncryptionKey()
-              .AddEphemeralSigningKey();
+                //  options.AddEphemeralEncryptionKey()
+                //.AddEphemeralSigningKey();
+
+
+                options.AddEncryptionKey(new SymmetricSecurityKey(
+                   Convert.FromBase64String("DRjd/GnduI3Efzen9V9BvbNUfc/VKgXltV7Kbk9sMkY=")));
+                
+                // Register the signing credentials.
+                //options.AddDevelopmentSigningCertificate();
+
 
                 //options.AddEncryptionKey(new SymmetricSecurityKey(Convert.FromBase64String("Kgva8Jh/K/ui4ECtinfw8JJxdxbw9Fi07x7Qv9xaZXI=")));
                 //options.AddSigningKey(new SymmetricSecurityKey(Convert.FromBase64String("Kgva8Jh/K/ui4ECtinfw8JJxdxbw9Fi07x7Qv9xaZXI=")));
 
 
-                //options.AddSigningCertificate(certificate);
+                options.AddSigningCertificate(certificate);
 
 
                 options.UseAspNetCore()

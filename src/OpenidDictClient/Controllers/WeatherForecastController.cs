@@ -1,11 +1,13 @@
+using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Mvc;
+using Microsoft.Extensions.Options;
 using Microsoft.IdentityModel.Tokens;
 using System.IdentityModel.Tokens.Jwt;
-using System.Security.Cryptography;
 using System.Text;
 
-namespace WebApiClient.Controllers;
+namespace OpenidDictClient.Controllers;
 
+[Authorize]
 [ApiController]
 [Route("[controller]")]
 public class WeatherForecastController : ControllerBase
@@ -22,9 +24,13 @@ public class WeatherForecastController : ControllerBase
         _logger = logger;
     }
 
+    [Authorize]
+    [AllowAnonymous]
     [HttpGet(Name = "GetWeatherForecast")]
     public IEnumerable<WeatherForecast> Get()
     {
+        var tt = User.Identity;
+
         return Enumerable.Range(1, 5).Select(index => new WeatherForecast
         {
             Date = DateOnly.FromDateTime(DateTime.Now.AddDays(index)),
@@ -34,18 +40,10 @@ public class WeatherForecastController : ControllerBase
         .ToArray();
     }
 
-    [HttpPost(Name = "MyTokenValidator")]
-    public IActionResult MyTokenValidator([FromBody] string token111)
-    {
-        var key = Convert.ToBase64String(RandomNumberGenerator.GetBytes(32));
-        Console.WriteLine(key);
 
-
-        var result = Validator11(token111);
-        return Ok(result);
-    }
-
-    public string Validator11(string token)
+    [AllowAnonymous]
+    [HttpPost("ValidateToken")]
+    public IActionResult ValidateToken([FromBody]string token)
     {
         try
         {
@@ -61,18 +59,16 @@ public class WeatherForecastController : ControllerBase
                 ValidateIssuerSigningKey = true,
                 ValidIssuer = "https://localhost:44395/",
                 ValidAudience = "rs_dataEventRecordsApi",
-                IssuerSigningKey = new SymmetricSecurityKey(Encoding.UTF8.GetBytes("a-string-secret-at-least-256-bits-long"))
+                IssuerSigningKey = new SymmetricSecurityKey(Convert.FromBase64String("DRjd/GnduI3Efzen9V9BvbNUfc/VKgXltV7Kbk9sMkY="))                   
             };
 
             var principal = handler.ValidateToken(token, tokenValidationParameters, out var validatedToken);
-            return principal.Identity.Name;
+            return Ok(principal.Identity.Name);
 
         }
         catch (Exception ex)
         {
             throw;
         }
-
     }
-
 }

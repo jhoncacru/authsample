@@ -5,7 +5,7 @@ VisualStudioVersion = 17.13.35825.156
 MinimumVisualStudioVersion = 10.0.40219.1
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "ResourceServer", "ResourceServer\ResourceServer.csproj", "{026339E1-54BE-03E6-8D30-38B0E41BE7FC}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "WebApiClient", "WebApiClient\WebApiClient.csproj", "{F06F6ACF-7540-462E-8491-2926E4142F4D}"
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "OpenidDictClient", "OpenidDictClient\OpenidDictClient.csproj", "{90002AC3-0DB4-4D1C-A3E6-1A9780E7B4FD}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
@@ -17,10 +17,10 @@ Global
 		{026339E1-54BE-03E6-8D30-38B0E41BE7FC}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{026339E1-54BE-03E6-8D30-38B0E41BE7FC}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{026339E1-54BE-03E6-8D30-38B0E41BE7FC}.Release|Any CPU.Build.0 = Release|Any CPU
-		{F06F6ACF-7540-462E-8491-2926E4142F4D}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
-		{F06F6ACF-7540-462E-8491-2926E4142F4D}.Debug|Any CPU.Build.0 = Debug|Any CPU
-		{F06F6ACF-7540-462E-8491-2926E4142F4D}.Release|Any CPU.ActiveCfg = Release|Any CPU
-		{F06F6ACF-7540-462E-8491-2926E4142F4D}.Release|Any CPU.Build.0 = Release|Any CPU
+		{90002AC3-0DB4-4D1C-A3E6-1A9780E7B4FD}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{90002AC3-0DB4-4D1C-A3E6-1A9780E7B4FD}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{90002AC3-0DB4-4D1C-A3E6-1A9780E7B4FD}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{90002AC3-0DB4-4D1C-A3E6-1A9780E7B4FD}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
