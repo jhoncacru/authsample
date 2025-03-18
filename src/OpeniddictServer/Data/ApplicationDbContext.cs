@@ -1,4 +1,4 @@
-﻿using Fido2Identity;
+﻿//using Fido2Identity;
 using Microsoft.AspNetCore.Identity.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore;
 
@@ -11,11 +11,11 @@ public class ApplicationDbContext : IdentityDbContext<ApplicationUser>
     {
     }
 
-    public DbSet<FidoStoredCredential> FidoStoredCredential => Set<FidoStoredCredential>();
+   // public DbSet<FidoStoredCredential> FidoStoredCredential => Set<FidoStoredCredential>();
 
     protected override void OnModelCreating(ModelBuilder builder)
     {
-        builder.Entity<FidoStoredCredential>().HasKey(m => m.Id);
+        //builder.Entity<FidoStoredCredential>().HasKey(m => m.Id);
 
         base.OnModelCreating(builder);
     }
