@@ -40,11 +40,11 @@ namespace OpeniddictServer
                         },
                         PostLogoutRedirectUris =
                         {
-                            new Uri("https://localhost:4200")
+                            new Uri("http://localhost:4200")
                         },
                         RedirectUris =
                         {
-                            new Uri("https://localhost:4200")
+                            new Uri("http://localhost:4200")
                         },
                         Permissions =
                         {
@@ -80,6 +80,7 @@ namespace OpeniddictServer
                         Permissions.Endpoints.Authorization,
                         Permissions.Endpoints.Token,
                         Permissions.GrantTypes.ClientCredentials,
+                        Permissions.Endpoints.Introspection,
                         Permissions.Prefixes.Scope + "dataEventRecords"
                     }
                     });

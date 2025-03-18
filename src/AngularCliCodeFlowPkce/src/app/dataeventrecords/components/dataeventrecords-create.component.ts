@@ -1,4 +1,4 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, inject, OnInit } from '@angular/core';
 import { Router } from '@angular/router';
 import { Observable } from 'rxjs';
 import { map } from 'rxjs/operators';
@@ -13,6 +13,9 @@ import { DataEventRecord } from '../models/DataEventRecord';
 })
 
 export class DataEventRecordsCreateComponent implements OnInit {
+
+    accessToken : string = "";
+    idToken : string = "";
 
     message: string;
     DataEventRecord: DataEventRecord = {
@@ -36,6 +39,8 @@ export class DataEventRecordsCreateComponent implements OnInit {
             }));
 
         this.DataEventRecord = { id: 0, name: '', description: '', timestamp: '' };
+
+        this.loadTokens();
     }
 
      Create() {
@@ -44,5 +49,20 @@ export class DataEventRecordsCreateComponent implements OnInit {
             .Add(this.DataEventRecord)
             .subscribe((data: any) => this.DataEventRecord = data,
             () => this._router.navigate(['/dataeventrecords']));
+    }
+
+    loadTokens()
+    {
+           this.oidcSecurityService.getAccessToken().subscribe((token) => {            
+            if (token !== '') {
+              this.accessToken = token;
+            }
+          });
+
+          this.oidcSecurityService.getIdToken().subscribe((token) => {            
+            if (token !== '') {
+              this.idToken = token;
+            }
+          });
     }
 }

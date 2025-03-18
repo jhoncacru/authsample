@@ -6,9 +6,13 @@ using Microsoft.EntityFrameworkCore;
 using Microsoft.IdentityModel.Logging;
 using Microsoft.IdentityModel.Protocols.OpenIdConnect;
 using Microsoft.IdentityModel.Tokens;
+using NuGet.Packaging.Signing;
 using OpeniddictServer.Data;
 using Quartz;
 using System.Security.Claims;
+using System.Security.Cryptography;
+using System.Security.Cryptography.X509Certificates;
+using System.Text;
 using static OpenIddict.Abstractions.OpenIddictConstants;
 
 namespace OpeniddictServer;
@@ -22,6 +26,13 @@ public class Startup
 
     public void ConfigureServices(IServiceCollection services)
     {
+
+        var certPath = "D:\\Development\\GITHub\\AuthServerUAB\\UAB-IASD\\AuthServerUAB.Api\\local.auth.dev.pfx";
+        // File.WriteAllLines($"log/{DateTime.Now.Ticks}.txt", new []{ certPath });
+        var certPassword = "asdfasdf0"; // Contraseña del certificado
+        var certificate = new X509Certificate2(certPath, certPassword);
+
+
         services.AddControllersWithViews();
         services.AddRazorPages();
 
@@ -148,17 +159,38 @@ public class Startup
                    .SetEndSessionEndpointUris("connect/logout")
                    .SetTokenEndpointUris("connect/token")
                    .SetUserInfoEndpointUris("connect/userinfo")
-                   .SetEndUserVerificationEndpointUris("connect/verify");
+                   .SetEndUserVerificationEndpointUris("connect/verify");                   
 
                 options.AllowAuthorizationCodeFlow()
                        .AllowHybridFlow()
                        .AllowClientCredentialsFlow()
-                       .AllowRefreshTokenFlow();
+                       .AllowRefreshTokenFlow()
+                       .SetAccessTokenLifetime(TimeSpan.FromMinutes(60));
 
                 options.RegisterScopes(Scopes.Email, Scopes.Profile, Scopes.Roles, "dataEventRecords");
 
-                options.AddDevelopmentEncryptionCertificate()
-                       .AddDevelopmentSigningCertificate();
+
+                //options.AddDevelopmentEncryptionCertificate()
+                //       .AddDevelopmentSigningCertificate();
+
+
+                //options.AddEncryptionKey(new SymmetricSecurityKey(
+                //   Convert.FromBase64String("DRjd/GnduI3Efzen9V9BvbNUfc/VKgXltV7Kbk9sMkY=")));
+
+                //options.AddSigningCertificate(certificate);
+                //var signingKey = new SymmetricSecurityKey(Encoding.UTF8.GetBytes("clave-secreta-de-256-bits-para-p"));
+                //options.AddEncryptionKey(signingKey);
+                //options.AddSigningKey(signingKey);
+
+                options.AddEphemeralEncryptionKey()
+              .AddEphemeralSigningKey();
+
+                //options.AddEncryptionKey(new SymmetricSecurityKey(Convert.FromBase64String("Kgva8Jh/K/ui4ECtinfw8JJxdxbw9Fi07x7Qv9xaZXI=")));
+                //options.AddSigningKey(new SymmetricSecurityKey(Convert.FromBase64String("Kgva8Jh/K/ui4ECtinfw8JJxdxbw9Fi07x7Qv9xaZXI=")));
+
+
+                //options.AddSigningCertificate(certificate);
+
 
                 options.UseAspNetCore()
                        .EnableAuthorizationEndpointPassthrough()
@@ -166,6 +198,8 @@ public class Startup
                        .EnableTokenEndpointPassthrough()
                        .EnableUserInfoEndpointPassthrough()
                        .EnableStatusCodePagesIntegration();
+
+                options.DisableAccessTokenEncryption();
             })
             .AddValidation(options =>
             {
