@@ -52,7 +52,9 @@ public class Program
     //    .Enrich.FromLogContext()
     //    .WriteTo.File(hostingContext.Configuration["AppSettings:LogFilePath"])
     //    .WriteTo.Console(theme: AnsiConsoleTheme.Code))
-            .UseSerilog((context, configuration) => configuration.ReadFrom.Configuration(context.Configuration).WriteTo.Console(theme: AnsiConsoleTheme.Code))
+        .UseSerilog((context, configuration) => configuration.ReadFrom.Configuration(context.Configuration)
+            .Enrich.FromLogContext()
+            .WriteTo.Console(theme: AnsiConsoleTheme.Code))
 
             .ConfigureWebHostDefaults(webBuilder =>
             {

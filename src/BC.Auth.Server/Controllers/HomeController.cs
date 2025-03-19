@@ -9,8 +9,7 @@ public class HomeController : Controller
 
     public HomeController(ILogger<HomeController> logger, IConfiguration configuration)
     {
-        _logger = logger;
-        //Log.Error("Startup:DefaultStringConnection : " + configuration.GetConnectionString("DefaultConnection"));
+        _logger = logger;        
     }
 
     public IActionResult Index()

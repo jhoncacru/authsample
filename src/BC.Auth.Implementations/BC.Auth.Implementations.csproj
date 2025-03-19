@@ -7,4 +7,14 @@
 	  <Authors>BestCode Solutions</Authors>
   </PropertyGroup>
 
+  <ItemGroup>
+    <PackageReference Include="Microsoft.AspNetCore.Identity.UI" Version="9.0.0" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <Reference Include="Microsoft.Extensions.Options">
+      <HintPath>E:\Programs Files\.nuget\microsoft.extensions.options\9.0.0\lib\net9.0\Microsoft.Extensions.Options.dll</HintPath>
+    </Reference>
+  </ItemGroup>
+
 </Project>
