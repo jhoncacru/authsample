@@ -362,3 +362,4 @@ MigrationBackup/
 FodyWeavers.xsd
 /LogFiles
 /src/oidc-server.txt
+/src/deploy
