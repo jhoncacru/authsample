@@ -14,11 +14,11 @@ public class HomeController : Controller
 
     public IActionResult Index()
     {
-        return View();
-    }
+        if (!User.Identity.IsAuthenticated)
+        {
+            return RedirectToAction("Login", "Account", new { area = "Identity" });
+        }
 
-    public IActionResult Privacy()
-    {
         return View();
     }
 

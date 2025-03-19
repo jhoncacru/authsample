@@ -38,6 +38,7 @@
 		<PackageReference Include="Microsoft.AspNetCore.Identity.EntityFrameworkCore" Version="9.0.0" />
 		<PackageReference Include="Microsoft.AspNetCore.Identity.UI" Version="9.0.0" />
 		<PackageReference Include="Microsoft.AspNetCore.Mvc.Razor.RuntimeCompilation" Version="9.0.0" />
+		<PackageReference Include="Microsoft.EntityFrameworkCore.Sqlite" Version="9.0.0" />
 		<PackageReference Include="Microsoft.EntityFrameworkCore.SqlServer" Version="9.0.0" />
 		<PackageReference Include="Microsoft.EntityFrameworkCore.Tools" PrivateAssets="All" Version="9.0.0" />
 		<PackageReference Include="Microsoft.VisualStudio.Web.CodeGeneration.Design" Version="9.0.0" />
@@ -62,6 +63,12 @@
 		<ProjectReference Include="..\BC.Auth.Implementations\BC.Auth.Implementations.csproj" />
 		<ProjectReference Include="..\BC.Auth.Infra\BC.Auth.Infra.csproj" />
 		<ProjectReference Include="..\BC.Auth.Resources\BC.Auth.Resources.csproj" />
+	</ItemGroup>
+
+	<ItemGroup>
+	  <None Update="_private\local.auth.dev.pfx">
+	    <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+	  </None>
 	</ItemGroup>
 
 </Project>

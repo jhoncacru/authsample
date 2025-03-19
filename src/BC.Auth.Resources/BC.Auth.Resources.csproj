@@ -13,12 +13,21 @@
       <AutoGen>True</AutoGen>
       <DependentUpon>LogIn.resx</DependentUpon>
     </Compile>
+    <Compile Update="Register.Designer.cs">
+      <DesignTime>True</DesignTime>
+      <AutoGen>True</AutoGen>
+      <DependentUpon>Register.resx</DependentUpon>
+    </Compile>
   </ItemGroup>
 
   <ItemGroup>
     <EmbeddedResource Update="LogIn.resx">
       <Generator>PublicResXFileCodeGenerator</Generator>
       <LastGenOutput>LogIn.Designer.cs</LastGenOutput>
+    </EmbeddedResource>
+    <EmbeddedResource Update="Register.resx">
+      <Generator>PublicResXFileCodeGenerator</Generator>
+      <LastGenOutput>Register.Designer.cs</LastGenOutput>
     </EmbeddedResource>
   </ItemGroup>
 

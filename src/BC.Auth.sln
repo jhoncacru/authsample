@@ -5,12 +5,6 @@ VisualStudioVersion = 17.0.32002.185
 MinimumVisualStudioVersion = 10.0.40219.1
 Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "BC.Auth.Server", "BC.Auth.Server\BC.Auth.Server.csproj", "{D12043A7-436F-4C60-AE8D-4A4D8EB6076C}"
 EndProject
-Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "_dev", "_dev", "{03B25853-92B2-4FAF-85FB-E68AA2F24B6F}"
-	ProjectSection(SolutionItems) = preProject
-		.github\workflows\dotnet.yml = .github\workflows\dotnet.yml
-		README.md = README.md
-	EndProjectSection
-EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "BC.Auth.Resources", "BC.Auth.Resources\BC.Auth.Resources.csproj", "{94FCE79C-D0E3-4ACD-A5D8-45FED134DB6B}"
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "BC.Auth.Implementations", "BC.Auth.Implementations\BC.Auth.Implementations.csproj", "{B731D6B1-ADE7-4140-85DA-1913F9B3ED8B}"

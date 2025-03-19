@@ -68,6 +68,12 @@ public class Startup
 
         app.UseEndpoints(endpoints =>
         {
+            endpoints.MapControllerRoute(
+                      name: "areas",
+                      pattern: "{area:exists}/{controller=Home}/{action=Index}"
+                    );
+
+
             endpoints.MapControllers();
             endpoints.MapDefaultControllerRoute();
             endpoints.MapRazorPages();
