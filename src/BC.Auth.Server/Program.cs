@@ -1,3 +1,4 @@
+using Microsoft.CodeAnalysis.Elfie.Serialization;
 using Serilog;
 using Serilog.Events;
 using Serilog.Sinks.SystemConsole.Themes;
@@ -46,12 +47,13 @@ public class Program
                     .AddJsonFile($"appsettings.{env.EnvironmentName}.json", optional: true, reloadOnChange: true)
                     .AddEnvironmentVariables();
             })
-            .UseSerilog((hostingContext, loggerConfiguration) => loggerConfiguration
-                .ReadFrom.Configuration(hostingContext.Configuration)
-                .Enrich.FromLogContext()
-                .WriteTo.File(hostingContext.Configuration["AppSettings:LogFilePath"])
-                .WriteTo.Console(theme: AnsiConsoleTheme.Code)
-            )
+    //.UseSerilog((hostingContext, loggerConfiguration) => loggerConfiguration
+    //    .ReadFrom.Configuration(hostingContext.Configuration)
+    //    .Enrich.FromLogContext()
+    //    .WriteTo.File(hostingContext.Configuration["AppSettings:LogFilePath"])
+    //    .WriteTo.Console(theme: AnsiConsoleTheme.Code))
+            .UseSerilog((context, configuration) => configuration.ReadFrom.Configuration(context.Configuration).WriteTo.Console(theme: AnsiConsoleTheme.Code))
+
             .ConfigureWebHostDefaults(webBuilder =>
             {
                 webBuilder.UseStartup<Startup>();

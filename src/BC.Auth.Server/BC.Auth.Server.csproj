@@ -9,10 +9,18 @@
 	</PropertyGroup>
 
 	<ItemGroup>
+		<Compile Remove="Data\**" />
 		<Compile Remove="Fido2\**" />
+		<Compile Remove="Migrations\**" />
+		<Content Remove="Data\**" />
 		<Content Remove="Fido2\**" />
+		<Content Remove="Migrations\**" />
+		<EmbeddedResource Remove="Data\**" />
 		<EmbeddedResource Remove="Fido2\**" />
+		<EmbeddedResource Remove="Migrations\**" />
+		<None Remove="Data\**" />
 		<None Remove="Fido2\**" />
+		<None Remove="Migrations\**" />
 	</ItemGroup>
 
 	<ItemGroup>
@@ -25,7 +33,6 @@
 	</ItemGroup>
 
 	<ItemGroup>
-		<PackageReference Include="Fido2" Version="3.0.1" />
 		<PackageReference Include="Microsoft.AspNetCore.Authentication.OpenIdConnect" Version="9.0.0" />
 		<PackageReference Include="Microsoft.AspNetCore.Diagnostics.EntityFrameworkCore" Version="9.0.0" />
 		<PackageReference Include="Microsoft.AspNetCore.Identity.EntityFrameworkCore" Version="9.0.0" />
@@ -50,11 +57,9 @@
 	</ItemGroup>
 
 	<ItemGroup>
-		<Folder Include="Migrations\" />
-		<Folder Include="Configurations\" />
-	</ItemGroup>
-
-	<ItemGroup>
+		<ProjectReference Include="..\BC.Auth.Domain\BC.Auth.Domain.csproj" />
+		<ProjectReference Include="..\BC.Auth.Implementations\BC.Auth.Implementations.csproj" />
+		<ProjectReference Include="..\BC.Auth.Infra\BC.Auth.Infra.csproj" />
 		<ProjectReference Include="..\BC.Auth.Resources\BC.Auth.Resources.csproj" />
 	</ItemGroup>
 

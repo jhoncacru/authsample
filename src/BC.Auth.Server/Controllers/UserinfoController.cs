@@ -6,6 +6,7 @@ using OpenIddict.Abstractions;
 using OpenIddict.Server.AspNetCore;
 using BC.Auth.Server.Data;
 using static OpenIddict.Abstractions.OpenIddictConstants;
+using BC.Auth.Domain;
 
 namespace BC.Auth.Server.Controllers;
 

@@ -18,6 +18,7 @@ using BC.Auth.Server.Helpers;
 using BC.Auth.Server.ViewModels.Authorization;
 using System.Security.Claims;
 using static OpenIddict.Abstractions.OpenIddictConstants;
+using BC.Auth.Domain;
 
 namespace BC.Auth.Server.Controllers;
 

@@ -3,6 +3,7 @@ using Microsoft.AspNetCore.Identity;
 using Microsoft.AspNetCore.Mvc;
 using OpenIddict.Validation.AspNetCore;
 using BC.Auth.Server.Data;
+using BC.Auth.Domain;
 
 namespace BC.Auth.Server.Controllers;
 

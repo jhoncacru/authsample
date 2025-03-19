@@ -17,6 +17,8 @@ Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "BC.Auth.Implementations", "
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "BC.Auth.Infra", "BC.Auth.Infra\BC.Auth.Infra.csproj", "{179B4C58-1B15-48A2-A0AC-ECF2AF8DEE9B}"
 EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "BC.Auth.Domain", "BC.Auth.Domain\BC.Auth.Domain.csproj", "{5E9978DB-AE91-418D-B86E-552C8A5CDD5F}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
@@ -39,6 +41,10 @@ Global
 		{179B4C58-1B15-48A2-A0AC-ECF2AF8DEE9B}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{179B4C58-1B15-48A2-A0AC-ECF2AF8DEE9B}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{179B4C58-1B15-48A2-A0AC-ECF2AF8DEE9B}.Release|Any CPU.Build.0 = Release|Any CPU
+		{5E9978DB-AE91-418D-B86E-552C8A5CDD5F}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{5E9978DB-AE91-418D-B86E-552C8A5CDD5F}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{5E9978DB-AE91-418D-B86E-552C8A5CDD5F}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{5E9978DB-AE91-418D-B86E-552C8A5CDD5F}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE

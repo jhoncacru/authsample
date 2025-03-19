@@ -6,7 +6,7 @@
 using Microsoft.AspNetCore.Identity;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.AspNetCore.Mvc.RazorPages;
-using BC.Auth.Server.Data;
+using BC.Auth.Domain;
 
 namespace BC.Auth.Server.Areas.Identity.Pages.Account.Manage
 {

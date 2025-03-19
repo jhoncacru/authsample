@@ -9,6 +9,7 @@ using Microsoft.AspNetCore.Mvc;
 using Microsoft.AspNetCore.Mvc.RazorPages;
 using BC.Auth.Server.Data;
 using System.ComponentModel.DataAnnotations;
+using BC.Auth.Domain;
 
 namespace BC.Auth.Server.Areas.Identity.Pages.Account
 {
