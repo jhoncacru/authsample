@@ -13,6 +13,8 @@ Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "_dev", "_dev", "{03B25853-9
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "BC.Auth.Resources", "BC.Auth.Resources\BC.Auth.Resources.csproj", "{94FCE79C-D0E3-4ACD-A5D8-45FED134DB6B}"
 EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "BC.Auth.Implementations", "BC.Auth.Implementations\BC.Auth.Implementations.csproj", "{B731D6B1-ADE7-4140-85DA-1913F9B3ED8B}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
@@ -27,6 +29,10 @@ Global
 		{94FCE79C-D0E3-4ACD-A5D8-45FED134DB6B}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{94FCE79C-D0E3-4ACD-A5D8-45FED134DB6B}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{94FCE79C-D0E3-4ACD-A5D8-45FED134DB6B}.Release|Any CPU.Build.0 = Release|Any CPU
+		{B731D6B1-ADE7-4140-85DA-1913F9B3ED8B}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{B731D6B1-ADE7-4140-85DA-1913F9B3ED8B}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{B731D6B1-ADE7-4140-85DA-1913F9B3ED8B}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{B731D6B1-ADE7-4140-85DA-1913F9B3ED8B}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE

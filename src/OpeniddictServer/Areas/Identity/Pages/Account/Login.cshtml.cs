@@ -132,6 +132,10 @@ namespace OpeniddictServer.Areas.Identity.Pages.Account
                     _logger.LogWarning("User account locked out.");
                     return RedirectToPage("./Lockout");
                 }
+                if (result.IsNotAllowed) {
+                    ModelState.AddModelError(string.Empty, "Email confirm required.");
+                    return Page();
+                }
                 else
                 {
                     ModelState.AddModelError(string.Empty, "Invalid login attempt.");

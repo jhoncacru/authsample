@@ -29,8 +29,7 @@ public class Startup
     public void ConfigureServices(IServiceCollection services)
     {
 
-        var certPath =  Configuration["AppSettings:CertificateFilePath"];
-        // File.WriteAllLines($"log/{DateTime.Now.Ticks}.txt", new []{ certPath });
+        var certPath =  Configuration["AppSettings:CertificateFilePath"];        
         var certPassword = Configuration["AppSettings:CertificatePassword"]; // Contraseña del certificado
         var certificate = new X509Certificate2(certPath, certPassword);
 
@@ -39,21 +38,25 @@ public class Startup
         services.AddRazorPages();
 
         services.AddDbContext<ApplicationDbContext>(options =>
-        {
-            // Configure the context to use Microsoft SQL Server.
-            options.UseSqlServer(Configuration.GetConnectionString("DefaultConnection"));
-
-            // Register the entity sets needed by OpenIddict.
-            // Note: use the generic overload if you need
-            // to replace the default OpenIddict entities.
+        {            
+            options.UseSqlServer(Configuration.GetConnectionString("DefaultConnection"));            
             options.UseOpenIddict();
         });
 
         services.AddDatabaseDeveloperPageExceptionFilter();
 
-        services.AddIdentity<ApplicationUser, IdentityRole>()
+        services.AddIdentity<ApplicationUser, IdentityRole>(opt =>
+        {
+            opt.Password.RequiredLength = 7;
+            opt.Password.RequireDigit = false;
+            opt.Password.RequireUppercase = false;
+            opt.User.RequireUniqueEmail = true;
+            //opt.SignIn.RequireConfirmedEmail = true;
+            //opt.Tokens.EmailConfirmationTokenProvider = "emailconfirmation";
+        })
           .AddEntityFrameworkStores<ApplicationDbContext>()
           .AddDefaultTokenProviders()
+          //.AddTokenProvider<EmailConfirmationTokenProvider<User>>("emailconfirmation")
           .AddDefaultUI();
           //.AddTokenProvider<Fido2UserTwoFactorTokenProvider>("FIDO2");
 
