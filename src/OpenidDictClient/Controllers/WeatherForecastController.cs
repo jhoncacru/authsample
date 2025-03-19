@@ -3,6 +3,7 @@ using Microsoft.AspNetCore.Mvc;
 using Microsoft.Extensions.Options;
 using Microsoft.IdentityModel.Tokens;
 using System.IdentityModel.Tokens.Jwt;
+using System.Security.Claims;
 using System.Text;
 
 namespace OpenidDictClient.Controllers;
@@ -27,17 +28,12 @@ public class WeatherForecastController : ControllerBase
     [Authorize]
     [AllowAnonymous]
     [HttpGet(Name = "GetWeatherForecast")]
-    public IEnumerable<WeatherForecast> Get()
+    public IActionResult Get()
     {
-        var tt = User.Identity;
-
-        return Enumerable.Range(1, 5).Select(index => new WeatherForecast
-        {
-            Date = DateOnly.FromDateTime(DateTime.Now.AddDays(index)),
-            TemperatureC = Random.Shared.Next(-20, 55),
-            Summary = Summaries[Random.Shared.Next(Summaries.Length)]
-        })
-        .ToArray();
+        //var tt = User.Identity;
+        var claims = (ClaimsIdentity)User.Identity;
+        var datas = claims.Claims.Select(p => new { p.Issuer, SubjectName = p.Subject!.Name, ClaimType = p.Type,  p.Value });
+        return Ok(datas);
     }
 
 

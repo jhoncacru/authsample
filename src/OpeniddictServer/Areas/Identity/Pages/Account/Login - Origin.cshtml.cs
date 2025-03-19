@@ -65,7 +65,6 @@ namespace OpeniddictServer.Areas.Identity.Pages.Account
             /// </summary>
             [Required]
             [EmailAddress]
-            [Display(ResourceType = typeof(BC.Auth.Resources.LogIn))]
             public string Email { get; set; }
 
             /// <summary>

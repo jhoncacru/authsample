@@ -9,6 +9,8 @@ using Microsoft.IdentityModel.Tokens;
 using NuGet.Packaging.Signing;
 using OpeniddictServer.Data;
 using Quartz;
+using Serilog;
+using Serilog.Core;
 using System.Security.Claims;
 using System.Security.Cryptography;
 using System.Security.Cryptography.X509Certificates;
@@ -27,9 +29,9 @@ public class Startup
     public void ConfigureServices(IServiceCollection services)
     {
 
-        var certPath = "D:\\Development\\GITHub\\AuthServerUAB\\UAB-IASD\\AuthServerUAB.Api\\local.auth.dev.pfx";
+        var certPath =  Configuration["AppSettings:CertificateFilePath"];
         // File.WriteAllLines($"log/{DateTime.Now.Ticks}.txt", new []{ certPath });
-        var certPassword = "asdfasdf0"; // Contraseña del certificado
+        var certPassword = Configuration["AppSettings:CertificatePassword"]; // Contraseña del certificado
         var certificate = new X509Certificate2(certPath, certPassword);
 
 
@@ -171,7 +173,7 @@ public class Startup
 
 
                 options.AddEncryptionKey(new SymmetricSecurityKey(
-                   Convert.FromBase64String("DRjd/GnduI3Efzen9V9BvbNUfc/VKgXltV7Kbk9sMkY=")));
+                   Convert.FromBase64String(Configuration["AppSettings:EncriptionKeyBase64"] )));
                 
                 // Register the signing credentials.
                 //options.AddDevelopmentSigningCertificate();

@@ -1,6 +1,7 @@
 using Serilog;
 using Serilog.Events;
 using Serilog.Sinks.SystemConsole.Themes;
+using System.Configuration;
 
 namespace OpeniddictServer;
 
@@ -15,6 +16,7 @@ public class Program
             .WriteTo.Console()
             .CreateLogger();
 
+        
         try
         {
             Log.Information("Starting web host");
@@ -45,11 +47,13 @@ public class Program
                     .AddEnvironmentVariables();
                 //.AddUserSecrets("your user secret....");
 
+                Log.Error("STRING CONNECTION", builder.GetConnectionString("DefaultConnection"));
+
             })
             .UseSerilog((hostingContext, loggerConfiguration) => loggerConfiguration
                 .ReadFrom.Configuration(hostingContext.Configuration)
                 .Enrich.FromLogContext()
-                .WriteTo.File("../oidc-server.txt")
+                .WriteTo.File(hostingContext.Configuration["AppSettings:LogFilePath"])
                 .WriteTo.Console(theme: AnsiConsoleTheme.Code)
             )
             .ConfigureWebHostDefaults(webBuilder =>

@@ -17,9 +17,24 @@ import { AuthModule, LogLevel } from 'angular-auth-oidc-client';
       routing,
       HttpClientModule,
       DataEventRecordsModule,
+      // AuthModule.forRoot({
+      //   config: {
+      //       authority: 'https://localhost:44395',
+      //       redirectUrl: window.location.origin,
+      //       postLogoutRedirectUri: window.location.origin,
+      //       clientId: 'angularclient',
+      //       scope: 'openid profile email dataEventRecords offline_access',
+      //       responseType: 'code',
+      //       silentRenew: true,
+      //       renewTimeBeforeTokenExpiresInSeconds: 10,
+      //       useRefreshToken: true,
+      //       logLevel: LogLevel.Debug,
+      //   },
+      // })
+
       AuthModule.forRoot({
         config: {
-            authority: 'https://localhost:44395',
+            authority: 'https://localhost/openiddict',
             redirectUrl: window.location.origin,
             postLogoutRedirectUri: window.location.origin,
             clientId: 'angularclient',
@@ -30,7 +45,8 @@ import { AuthModule, LogLevel } from 'angular-auth-oidc-client';
             useRefreshToken: true,
             logLevel: LogLevel.Debug,
         },
-      }),
+      })
+
   ],
   declarations: [
       AppComponent,
