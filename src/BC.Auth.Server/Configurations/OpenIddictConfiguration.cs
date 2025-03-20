@@ -9,7 +9,8 @@ namespace BC.Auth.Server.Configurations
     {
         public static void AddOpenIddictConfiguration(this IServiceCollection services, IConfiguration configuration)
         {
-            var certPath = configuration["AppSettings:CertificateFilePath"];
+            var certPath = AppDomain.CurrentDomain.BaseDirectory + "\\"+ configuration["AppSettings:CertificateFilePath"];
+            //var certPath = configuration["AppSettings:CertificateFilePath"];
             var certPassword = configuration["AppSettings:CertificatePassword"]; // Contraseña del certificado
             var certificate = new X509Certificate2(certPath, certPassword);
 
