@@ -46,12 +46,7 @@ public class Program
                 config.AddJsonFile("appsettings.json", optional: false, reloadOnChange: true)
                     .AddJsonFile($"appsettings.{env.EnvironmentName}.json", optional: true, reloadOnChange: true)
                     .AddEnvironmentVariables();
-            })
-    //.UseSerilog((hostingContext, loggerConfiguration) => loggerConfiguration
-    //    .ReadFrom.Configuration(hostingContext.Configuration)
-    //    .Enrich.FromLogContext()
-    //    .WriteTo.File(hostingContext.Configuration["AppSettings:LogFilePath"])
-    //    .WriteTo.Console(theme: AnsiConsoleTheme.Code))
+            })   
         .UseSerilog((context, configuration) => configuration.ReadFrom.Configuration(context.Configuration)
             .Enrich.FromLogContext()
             .WriteTo.Console(theme: AnsiConsoleTheme.Code))

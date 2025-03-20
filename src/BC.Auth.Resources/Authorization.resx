@@ -117,31 +117,34 @@
   <resheader name="writer">
     <value>System.Resources.ResXResourceWriter, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
   </resheader>
-  <data name="Email" xml:space="preserve">
-    <value>Email default</value>
+  <data name="APP_DETAILS_NOT_FOUND_IN_DB" xml:space="preserve">
+    <value>The application details cannot be found in the database.</value>
   </data>
-  <data name="EMAIL_HELP" xml:space="preserve">
-    <value>We'll never share your email with anyone else.</value>
+  <data name="GRANT_NOT_SUPPORTED" xml:space="preserve">
+    <value>The specified grant type is not supported</value>
   </data>
-  <data name="EXTERNAL_PROVIDERS" xml:space="preserve">
-    <value>There are no external authentication services configured. See this &lt;a href="https://go.microsoft.com/fwlink/?LinkID=532715"&gt;article</value>
+  <data name="INVALID_REQUEST" xml:space="preserve">
+    <value>The OpenID Connect request cannot be retrieved.</value>
   </data>
-  <data name="FORGOT_YOUR_PASSWORD" xml:space="preserve">
-    <value>Forgot your password?</value>
+  <data name="TOKEN_LONGER_INVALID" xml:space="preserve">
+    <value>The token is no longer valid.</value>
   </data>
-  <data name="LOG_IN" xml:space="preserve">
-    <value>Log in</value>
+  <data name="USER_CONSENT_REQUIRED" xml:space="preserve">
+    <value>Interactive user consent is required.</value>
   </data>
-  <data name="REGISTER_NEW_USER" xml:space="preserve">
-    <value>Register as a new user</value>
+  <data name="USER_NOT_ALLOWED_TO_APP" xml:space="preserve">
+    <value>The logged in user is not allowed to access this client application.</value>
   </data>
-  <data name="RESENT_EMAIL" xml:space="preserve">
-    <value>Resend email confirmation</value>
+  <data name="USER_NOT_ALLOWED_TO_SIGNIN" xml:space="preserve">
+    <value>"The user is no longer allowed to sign in.</value>
   </data>
-  <data name="TITLE" xml:space="preserve">
-    <value>Log In</value>
+  <data name="USER_NOT_LOGGED" xml:space="preserve">
+    <value>The user is not logged in.</value>
   </data>
-  <data name="USE_LOCAL_ACCOUNT" xml:space="preserve">
-    <value>Use a local account to log in.</value>
+  <data name="USER_WITHOUT_DETAILS" xml:space="preserve">
+    <value>The user details cannot be retrieved.</value>
+  </data>
+  <data name="WITHOUT_CLIENT_APP_DETAILS" xml:space="preserve">
+    <value>Details concerning the calling client application cannot be found.</value>
   </data>
 </root>

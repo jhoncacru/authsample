@@ -17,6 +17,8 @@ public class Startup
         services.AddControllersWithViews();
         services.AddRazorPages();
 
+        services.AddLocalization();
+
         services.AddDbContext<ApplicationDbContext>(options =>
         {            
             options.UseSqlServer(Configuration.GetConnectionString("AuthDBConnection"));            
@@ -24,6 +26,8 @@ public class Startup
         });
 
         services.AddDatabaseDeveloperPageExceptionFilter();
+
+        
 
         services.AddIdentityConfiguration();
         services.AddOpenIddictConfiguration(Configuration);
@@ -53,6 +57,8 @@ public class Startup
         app.UseStaticFiles();
 
         app.UseRouting();
+
+        app.UseRequestLocalization();
 
         //para habilitar por jhonca
         app.UseCors(builder => builder

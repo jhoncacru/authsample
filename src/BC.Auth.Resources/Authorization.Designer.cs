@@ -22,14 +22,14 @@ namespace BC.Auth.Resources {
     [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Resources.Tools.StronglyTypedResourceBuilder", "17.0.0.0")]
     [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
     [global::System.Runtime.CompilerServices.CompilerGeneratedAttribute()]
-    public class LogIn {
+    public class Authorization {
         
         private static global::System.Resources.ResourceManager resourceMan;
         
         private static global::System.Globalization.CultureInfo resourceCulture;
         
         [global::System.Diagnostics.CodeAnalysis.SuppressMessageAttribute("Microsoft.Performance", "CA1811:AvoidUncalledPrivateCode")]
-        internal LogIn() {
+        internal Authorization() {
         }
         
         /// <summary>
@@ -39,7 +39,7 @@ namespace BC.Auth.Resources {
         public static global::System.Resources.ResourceManager ResourceManager {
             get {
                 if (object.ReferenceEquals(resourceMan, null)) {
-                    global::System.Resources.ResourceManager temp = new global::System.Resources.ResourceManager("BC.Auth.Resources.LogIn", typeof(LogIn).Assembly);
+                    global::System.Resources.ResourceManager temp = new global::System.Resources.ResourceManager("BC.Auth.Resources.Authorization", typeof(Authorization).Assembly);
                     resourceMan = temp;
                 }
                 return resourceMan;
@@ -61,83 +61,92 @@ namespace BC.Auth.Resources {
         }
         
         /// <summary>
-        ///   Looks up a localized string similar to Email default.
+        ///   Looks up a localized string similar to The application details cannot be found in the database..
         /// </summary>
-        public static string Email {
+        public static string APP_DETAILS_NOT_FOUND_IN_DB {
             get {
-                return ResourceManager.GetString("Email", resourceCulture);
+                return ResourceManager.GetString("APP_DETAILS_NOT_FOUND_IN_DB", resourceCulture);
             }
         }
         
         /// <summary>
-        ///   Looks up a localized string similar to We&apos;ll never share your email with anyone else..
+        ///   Looks up a localized string similar to The specified grant type is not supported.
         /// </summary>
-        public static string EMAIL_HELP {
+        public static string GRANT_NOT_SUPPORTED {
             get {
-                return ResourceManager.GetString("EMAIL_HELP", resourceCulture);
+                return ResourceManager.GetString("GRANT_NOT_SUPPORTED", resourceCulture);
             }
         }
         
         /// <summary>
-        ///   Looks up a localized string similar to There are no external authentication services configured. See this &lt;a href=&quot;https://go.microsoft.com/fwlink/?LinkID=532715&quot;&gt;article.
+        ///   Looks up a localized string similar to The OpenID Connect request cannot be retrieved..
         /// </summary>
-        public static string EXTERNAL_PROVIDERS {
+        public static string INVALID_REQUEST {
             get {
-                return ResourceManager.GetString("EXTERNAL_PROVIDERS", resourceCulture);
+                return ResourceManager.GetString("INVALID_REQUEST", resourceCulture);
             }
         }
         
         /// <summary>
-        ///   Looks up a localized string similar to Forgot your password?.
+        ///   Looks up a localized string similar to The token is no longer valid..
         /// </summary>
-        public static string FORGOT_YOUR_PASSWORD {
+        public static string TOKEN_LONGER_INVALID {
             get {
-                return ResourceManager.GetString("FORGOT_YOUR_PASSWORD", resourceCulture);
+                return ResourceManager.GetString("TOKEN_LONGER_INVALID", resourceCulture);
             }
         }
         
         /// <summary>
-        ///   Looks up a localized string similar to Log in.
+        ///   Looks up a localized string similar to Interactive user consent is required..
         /// </summary>
-        public static string LOG_IN {
+        public static string USER_CONSENT_REQUIRED {
             get {
-                return ResourceManager.GetString("LOG_IN", resourceCulture);
+                return ResourceManager.GetString("USER_CONSENT_REQUIRED", resourceCulture);
             }
         }
         
         /// <summary>
-        ///   Looks up a localized string similar to Register as a new user.
+        ///   Looks up a localized string similar to The logged in user is not allowed to access this client application..
         /// </summary>
-        public static string REGISTER_NEW_USER {
+        public static string USER_NOT_ALLOWED_TO_APP {
             get {
-                return ResourceManager.GetString("REGISTER_NEW_USER", resourceCulture);
+                return ResourceManager.GetString("USER_NOT_ALLOWED_TO_APP", resourceCulture);
             }
         }
         
         /// <summary>
-        ///   Looks up a localized string similar to Resend email confirmation.
+        ///   Looks up a localized string similar to &quot;The user is no longer allowed to sign in..
         /// </summary>
-        public static string RESENT_EMAIL {
+        public static string USER_NOT_ALLOWED_TO_SIGNIN {
             get {
-                return ResourceManager.GetString("RESENT_EMAIL", resourceCulture);
+                return ResourceManager.GetString("USER_NOT_ALLOWED_TO_SIGNIN", resourceCulture);
             }
         }
         
         /// <summary>
-        ///   Looks up a localized string similar to Log In.
+        ///   Looks up a localized string similar to The user is not logged in..
         /// </summary>
-        public static string TITLE {
+        public static string USER_NOT_LOGGED {
             get {
-                return ResourceManager.GetString("TITLE", resourceCulture);
+                return ResourceManager.GetString("USER_NOT_LOGGED", resourceCulture);
             }
         }
         
         /// <summary>
-        ///   Looks up a localized string similar to Use a local account to log in..
+        ///   Looks up a localized string similar to The user details cannot be retrieved..
         /// </summary>
-        public static string USE_LOCAL_ACCOUNT {
+        public static string USER_WITHOUT_DETAILS {
             get {
-                return ResourceManager.GetString("USE_LOCAL_ACCOUNT", resourceCulture);
+                return ResourceManager.GetString("USER_WITHOUT_DETAILS", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Details concerning the calling client application cannot be found..
+        /// </summary>
+        public static string WITHOUT_CLIENT_APP_DETAILS {
+            get {
+                return ResourceManager.GetString("WITHOUT_CLIENT_APP_DETAILS", resourceCulture);
             }
         }
     }

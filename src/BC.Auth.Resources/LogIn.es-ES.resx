@@ -118,7 +118,7 @@
     <value>System.Resources.ResXResourceWriter, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
   </resheader>
   <data name="Email" xml:space="preserve">
-    <value>Email default</value>
+    <value>Email TRaducido</value>
   </data>
   <data name="EMAIL_HELP" xml:space="preserve">
     <value>We'll never share your email with anyone else.</value>
@@ -142,6 +142,6 @@
     <value>Log In</value>
   </data>
   <data name="USE_LOCAL_ACCOUNT" xml:space="preserve">
-    <value>Use a local account to log in.</value>
+    <value>Use a local account to log in. espanol</value>
   </data>
 </root>

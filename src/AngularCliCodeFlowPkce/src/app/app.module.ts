@@ -32,9 +32,25 @@ import { AuthModule, LogLevel } from 'angular-auth-oidc-client';
       //   },
       // })
 
+      // AuthModule.forRoot({
+      //   config: {
+      //       authority: 'https://localhost/openiddict',
+      //       redirectUrl: window.location.origin,
+      //       postLogoutRedirectUri: window.location.origin,
+      //       clientId: 'angularclient',
+      //       scope: 'openid profile email dataEventRecords offline_access',
+      //       responseType: 'code',
+      //       silentRenew: true,
+      //       renewTimeBeforeTokenExpiresInSeconds: 10,
+      //       useRefreshToken: true,
+      //       logLevel: LogLevel.Debug,
+      //   },
+      // })
+
+
       AuthModule.forRoot({
         config: {
-            authority: 'https://localhost/openiddict',
+            authority: 'https://suint-authentication.premiumasp.net',
             redirectUrl: window.location.origin,
             postLogoutRedirectUri: window.location.origin,
             clientId: 'angularclient',
@@ -46,6 +62,7 @@ import { AuthModule, LogLevel } from 'angular-auth-oidc-client';
             logLevel: LogLevel.Debug,
         },
       })
+
 
   ],
   declarations: [

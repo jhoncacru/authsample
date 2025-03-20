@@ -13,12 +13,12 @@ using Microsoft.Extensions.Primitives;
 using Microsoft.IdentityModel.Tokens;
 using OpenIddict.Abstractions;
 using OpenIddict.Server.AspNetCore;
-using BC.Auth.Server.Data;
 using BC.Auth.Server.Helpers;
 using BC.Auth.Server.ViewModels.Authorization;
 using System.Security.Claims;
 using static OpenIddict.Abstractions.OpenIddictConstants;
 using BC.Auth.Domain;
+using RS = BC.Auth.Resources.Authorization;
 
 namespace BC.Auth.Server.Controllers;
 
@@ -50,7 +50,7 @@ public class AuthorizationController : Controller
     public async Task<IActionResult> Authorize()
     {
         var request = HttpContext.GetOpenIddictServerRequest() ??
-            throw new InvalidOperationException("The OpenID Connect request cannot be retrieved.");
+            throw new InvalidOperationException(RS.INVALID_REQUEST);
 
         // If prompt=login was specified by the client application,
         // immediately return the user agent to the login page.
@@ -90,7 +90,7 @@ public class AuthorizationController : Controller
                     properties: new AuthenticationProperties(new Dictionary<string, string>
                     {
                         [OpenIddictServerAspNetCoreConstants.Properties.Error] = Errors.LoginRequired,
-                        [OpenIddictServerAspNetCoreConstants.Properties.ErrorDescription] = "The user is not logged in."
+                        [OpenIddictServerAspNetCoreConstants.Properties.ErrorDescription] = RS.USER_NOT_LOGGED
                     }));
             }
 
@@ -105,11 +105,11 @@ public class AuthorizationController : Controller
 
         // Retrieve the profile of the logged in user.
         var user = await _userManager.GetUserAsync(result.Principal) ??
-            throw new InvalidOperationException("The user details cannot be retrieved.");
+            throw new InvalidOperationException(RS.USER_WITHOUT_DETAILS);
 
         // Retrieve the application details from the database.
         var application = await _applicationManager.FindByClientIdAsync(request.ClientId) ??
-            throw new InvalidOperationException("Details concerning the calling client application cannot be found.");
+            throw new InvalidOperationException(RS.WITHOUT_CLIENT_APP_DETAILS);
 
         // Retrieve the permanent authorizations associated with the user and the calling client application.
         var authorizations = await _authorizationManager.FindAsync(
@@ -129,8 +129,7 @@ public class AuthorizationController : Controller
                     properties: new AuthenticationProperties(new Dictionary<string, string>
                     {
                         [OpenIddictServerAspNetCoreConstants.Properties.Error] = Errors.ConsentRequired,
-                        [OpenIddictServerAspNetCoreConstants.Properties.ErrorDescription] =
-                            "The logged in user is not allowed to access this client application."
+                        [OpenIddictServerAspNetCoreConstants.Properties.ErrorDescription] = RS.USER_NOT_ALLOWED_TO_APP
                     }));
 
             // If the consent is implicit or if an authorization was found,
@@ -178,7 +177,7 @@ public class AuthorizationController : Controller
                     {
                         [OpenIddictServerAspNetCoreConstants.Properties.Error] = Errors.ConsentRequired,
                         [OpenIddictServerAspNetCoreConstants.Properties.ErrorDescription] =
-                            "Interactive user consent is required."
+                            RS.USER_CONSENT_REQUIRED
                     }));
 
             // In every other case, render the consent form.
@@ -196,15 +195,15 @@ public class AuthorizationController : Controller
     public async Task<IActionResult> Accept()
     {
         var request = HttpContext.GetOpenIddictServerRequest() ??
-            throw new InvalidOperationException("The OpenID Connect request cannot be retrieved.");
+            throw new InvalidOperationException(RS.INVALID_REQUEST);
 
         // Retrieve the profile of the logged in user.
         var user = await _userManager.GetUserAsync(User) ??
-            throw new InvalidOperationException("The user details cannot be retrieved.");
+            throw new InvalidOperationException(RS.USER_WITHOUT_DETAILS);
 
         // Retrieve the application details from the database.
         var application = await _applicationManager.FindByClientIdAsync(request.ClientId) ??
-            throw new InvalidOperationException("Details concerning the calling client application cannot be found.");
+            throw new InvalidOperationException(RS.WITHOUT_CLIENT_APP_DETAILS);
 
         // Retrieve the permanent authorizations associated with the user and the calling client application.
         var authorizations = await _authorizationManager.FindAsync(
@@ -224,8 +223,7 @@ public class AuthorizationController : Controller
                 properties: new AuthenticationProperties(new Dictionary<string, string>
                 {
                     [OpenIddictServerAspNetCoreConstants.Properties.Error] = Errors.ConsentRequired,
-                    [OpenIddictServerAspNetCoreConstants.Properties.ErrorDescription] =
-                        "The logged in user is not allowed to access this client application."
+                    [OpenIddictServerAspNetCoreConstants.Properties.ErrorDescription] = RS.USER_NOT_ALLOWED_TO_APP
                 }));
         }
 
@@ -293,7 +291,7 @@ public class AuthorizationController : Controller
     public async Task<IActionResult> Exchange()
     {
         var request = HttpContext.GetOpenIddictServerRequest() ??
-            throw new InvalidOperationException("The OpenID Connect request cannot be retrieved.");
+            throw new InvalidOperationException(RS.INVALID_REQUEST);
 
         if (request.IsAuthorizationCodeGrantType() || request.IsRefreshTokenGrantType())
         {
@@ -308,7 +306,7 @@ public class AuthorizationController : Controller
             return await HandleExchangeClientCredentialsGrantType(request);
         }
 
-        throw new InvalidOperationException("The specified grant type is not supported.");
+        throw new InvalidOperationException(RS.GRANT_NOT_SUPPORTED);
     }
 
     private async Task<IActionResult> HandleExchangeClientCredentialsGrantType(OpenIddictRequest request)
@@ -316,7 +314,7 @@ public class AuthorizationController : Controller
         var application = await _applicationManager.FindByClientIdAsync(request.ClientId);
         if (application == null)
         {
-            throw new InvalidOperationException("The application details cannot be found in the database.");
+            throw new InvalidOperationException(RS.APP_DETAILS_NOT_FOUND_IN_DB);
         }
 
         // Create the claims-based identity that will be used by OpenIddict to generate tokens.
@@ -367,7 +365,7 @@ public class AuthorizationController : Controller
                 properties: new AuthenticationProperties(new Dictionary<string, string>
                 {
                     [OpenIddictServerAspNetCoreConstants.Properties.Error] = Errors.InvalidGrant,
-                    [OpenIddictServerAspNetCoreConstants.Properties.ErrorDescription] = "The token is no longer valid."
+                    [OpenIddictServerAspNetCoreConstants.Properties.ErrorDescription] = RS.TOKEN_LONGER_INVALID
                 }));
         }
 
@@ -379,7 +377,7 @@ public class AuthorizationController : Controller
                 properties: new AuthenticationProperties(new Dictionary<string, string>
                 {
                     [OpenIddictServerAspNetCoreConstants.Properties.Error] = Errors.InvalidGrant,
-                    [OpenIddictServerAspNetCoreConstants.Properties.ErrorDescription] = "The user is no longer allowed to sign in."
+                    [OpenIddictServerAspNetCoreConstants.Properties.ErrorDescription] = RS.USER_NOT_ALLOWED_TO_SIGNIN
                 }));
         }
 

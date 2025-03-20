@@ -12,7 +12,12 @@ namespace BC.Auth.Server.Configurations
             var certPath = AppDomain.CurrentDomain.BaseDirectory + "\\"+ configuration["AppSettings:CertificateFilePath"];
             //var certPath = configuration["AppSettings:CertificateFilePath"];
             var certPassword = configuration["AppSettings:CertificatePassword"]; // Contraseña del certificado
-            var certificate = new X509Certificate2(certPath, certPassword);
+            //var certificate = new X509Certificate2(certPath, certPassword);
+
+            var certificate = new X509Certificate2(
+                        certPath,
+                        certPassword,
+                        X509KeyStorageFlags.MachineKeySet | X509KeyStorageFlags.EphemeralKeySet);
 
             services.AddOpenIddict()
                 .AddCore(options =>

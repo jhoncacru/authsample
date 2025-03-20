@@ -4,9 +4,9 @@ using Microsoft.AspNetCore.Identity;
 using Microsoft.AspNetCore.Mvc;
 using OpenIddict.Abstractions;
 using OpenIddict.Server.AspNetCore;
-using BC.Auth.Server.Data;
 using static OpenIddict.Abstractions.OpenIddictConstants;
 using BC.Auth.Domain;
+using RS = BC.Auth.Resources.UserInfo;
 
 namespace BC.Auth.Server.Controllers;
 
@@ -32,8 +32,7 @@ public class UserinfoController : Controller
                 properties: new AuthenticationProperties(new Dictionary<string, string>
                 {
                     [OpenIddictServerAspNetCoreConstants.Properties.Error] = Errors.InvalidToken,
-                    [OpenIddictServerAspNetCoreConstants.Properties.ErrorDescription] =
-                        "The specified access token is bound to an account that no longer exists."
+                    [OpenIddictServerAspNetCoreConstants.Properties.ErrorDescription] = RS.ACCESS_TOKEN_NOT_BOUND_TO_USER                        
                 }));
         }
 

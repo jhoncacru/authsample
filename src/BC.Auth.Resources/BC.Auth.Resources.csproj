@@ -8,6 +8,11 @@
   </PropertyGroup>
 
   <ItemGroup>
+    <Compile Update="Authorization.Designer.cs">
+      <DesignTime>True</DesignTime>
+      <AutoGen>True</AutoGen>
+      <DependentUpon>Authorization.resx</DependentUpon>
+    </Compile>
     <Compile Update="LogIn.Designer.cs">
       <DesignTime>True</DesignTime>
       <AutoGen>True</AutoGen>
@@ -18,9 +23,24 @@
       <AutoGen>True</AutoGen>
       <DependentUpon>Register.resx</DependentUpon>
     </Compile>
+    <Compile Update="UserInfo.Designer.cs">
+      <DesignTime>True</DesignTime>
+      <AutoGen>True</AutoGen>
+      <DependentUpon>UserInfo.resx</DependentUpon>
+    </Compile>
   </ItemGroup>
 
   <ItemGroup>
+    <EmbeddedResource Update="Authorization.resx">
+      <Generator>PublicResXFileCodeGenerator</Generator>
+      <LastGenOutput>Authorization.Designer.cs</LastGenOutput>
+    </EmbeddedResource>
+    <EmbeddedResource Update="LogIn.es-MX.resx">
+      <Generator></Generator>
+    </EmbeddedResource>
+    <EmbeddedResource Update="LogIn.es-ES.resx">
+      <Generator></Generator>
+    </EmbeddedResource>
     <EmbeddedResource Update="LogIn.resx">
       <Generator>PublicResXFileCodeGenerator</Generator>
       <LastGenOutput>LogIn.Designer.cs</LastGenOutput>
@@ -28,6 +48,10 @@
     <EmbeddedResource Update="Register.resx">
       <Generator>PublicResXFileCodeGenerator</Generator>
       <LastGenOutput>Register.Designer.cs</LastGenOutput>
+    </EmbeddedResource>
+    <EmbeddedResource Update="UserInfo.resx">
+      <Generator>PublicResXFileCodeGenerator</Generator>
+      <LastGenOutput>UserInfo.Designer.cs</LastGenOutput>
     </EmbeddedResource>
   </ItemGroup>
 
